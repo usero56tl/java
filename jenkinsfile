@@ -1,5 +1,8 @@
 node {
     def app
+    environement {
+        dockerhub=credentials('dockerhub')
+    }
     stage('Clone') {
         checkout scm
     }
