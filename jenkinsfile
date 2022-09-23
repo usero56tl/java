@@ -1,6 +1,6 @@
 node {
     def app
-    environement {
+    environment {
         dockerhub=credentials('dockerhub')
     }
     stage('Clone') {
