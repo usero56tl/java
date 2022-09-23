@@ -13,8 +13,10 @@ node {
         withDockerContainer("usero56tl/tomcat:1.0"){ sh "echo 'hello world'" }
     }
     stage('Pushing to Docker hub') {
-        sh 'echo $dockerhub_PWD | docker login -u $dockerhub_USR --password-stdin'
-        
-        sh 'docker push usero56tl/tomcat:1.0'
+         if (env.dockerhub) {
+            sh 'echo $dockerhub_PWD | docker login -u $dockerhub_USR --password-stdin'
+            
+            sh 'docker push usero56tl/tomcat:1.0'
+        }
     }
 }
